@@ -13,8 +13,8 @@ SELECT code
     ,dbo.REGEXP_INSTR(code, '04|05')
 FROM codes(NOLOCK)
 WHERE code LIKE '090987906%'
-    OR acc_code LIKE '090987909%'
-ORDER BY acc_code;
+    OR code LIKE '090987909%'
+ORDER BY code;
 
 -- Using LIKE and PATINDEX.
 SELECT code
@@ -25,8 +25,8 @@ SELECT code
         END
 FROM codes(NOLOCK)
 WHERE code LIKE '090987906%'
-    OR acc_code LIKE '090987909%'
-ORDER BY acc_code;
+    OR code LIKE '090987909%'
+ORDER BY code;
 
 SET STATISTICS TIME OFF;
 -- messages

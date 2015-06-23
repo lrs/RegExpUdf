@@ -1,0 +1,5 @@
+L:\IVR\SharpDevelop Projects\UserDefinedFunctions\UserDefinedFunctions\obj\Release\ResolveAssemblyReference.cache
+L:\IVR\SharpDevelop Projects\UserDefinedFunctions\UserDefinedFunctions\obj\Release\UserDefinedFunctions.dll
+L:\IVR\SharpDevelop Projects\UserDefinedFunctions\UserDefinedFunctions\bin\Release\UserDefinedFunctions.dll
+L:\IVR\SharpDevelop Projects\UserDefinedFunctions\UserDefinedFunctions\bin\Release\UserDefinedFunctions.pdb
+L:\IVR\SharpDevelop Projects\UserDefinedFunctions\UserDefinedFunctions\obj\Release\UserDefinedFunctions.pdb

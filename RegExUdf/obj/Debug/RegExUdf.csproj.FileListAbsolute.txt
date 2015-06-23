@@ -1,0 +1,5 @@
+L:\IVR\SharpDevelop Projects\RegExUdf\RegExUdf\bin\Debug\RegExUdf.dll
+L:\IVR\SharpDevelop Projects\RegExUdf\RegExUdf\bin\Debug\RegExUdf.pdb
+L:\IVR\SharpDevelop Projects\RegExUdf\RegExUdf\obj\Debug\ResolveAssemblyReference.cache
+L:\IVR\SharpDevelop Projects\RegExUdf\RegExUdf\obj\Debug\RegExUdf.dll
+L:\IVR\SharpDevelop Projects\RegExUdf\RegExUdf\obj\Debug\RegExUdf.pdb

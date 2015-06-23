@@ -8,3 +8,5 @@ Provides the following functions:
 *    REGEXP_GET(@source NVARCHAR(250), @pattern NVARCHAR(250)) returns NVARCHAR(MAX)
 *    REGEXP_REPLACE(@source NVARCHAR(MAX), @pattern NVARCHAR(MAX), @replace NVARCHAR(MAX)) returns NVARCHAR(MAX)
 *    REGEXP_SPLIT (@source NVARCHAR(max), @pattern NVARCHAR(max)) RETURNS TABLE (split NVARCHAR(max) NULL)
+
+See CreateFunctions.sql and Examples.sql for installation and usage.

@@ -1,17 +1,29 @@
+-- May need to enable clr integration on the instance. Run RECONFIGURE after to install changes.
+EXEC sp_configure 'clr enabled' , '1';
+GO
+RECONFIGURE;
+GO
+
+-- The database that the assembly is going to be installed in.
 USE [MASTER]
 
-CREATE ASSEMBLY [regexp.RegExUdf] AUTHORIZATION [dbo]
---FROM 'C:\Windows\SysWOW64\RegExUdf.dll' WITH PERMISSION_SET = SAFE
+-- Set database to trustworthy for I/O methods if needed.
+ALTER DATABASE MASTER SET TRUSTWORTHY ON;
+GO
+
+-- Install the assembly.
+CREATE ASSEMBLY [sqlclr.RegExUdf] AUTHORIZATION [dbo]
 FROM 'C:\Windows\System32\RegExUdf.dll' WITH PERMISSION_SET = SAFE
 GO
 
+-- Create functions out of the methods in the assembly.
 CREATE FUNCTION REGEXP_LIKE (
     @source NVARCHAR(250)
     ,@pattern NVARCHAR(250)
     )
 RETURNS BIT
 AS
-EXTERNAL NAME [regexp.RegExUdf].RegExUdf.regexLike
+EXTERNAL NAME [sqlclr.RegExUdf].RegExUdf.regexLike
 GO
 
 CREATE FUNCTION REGEXP_INSTR (
@@ -20,7 +32,7 @@ CREATE FUNCTION REGEXP_INSTR (
     )
 RETURNS BIGINT
 AS
-EXTERNAL NAME [regexp.RegExUdf].RegExUdf.regexInstr
+EXTERNAL NAME [sqlclr.RegExUdf].RegExUdf.regexInstr
 GO
 
 CREATE FUNCTION REGEXP_GET (
@@ -29,7 +41,7 @@ CREATE FUNCTION REGEXP_GET (
     )
 RETURNS NVARCHAR(max)
 AS
-EXTERNAL NAME [regexp.RegExUdf].RegExUdf.regexGet
+EXTERNAL NAME [sqlclr.RegExUdf].RegExUdf.regexGet
 GO
 
 CREATE FUNCTION REGEXP_REPLACE (
@@ -39,7 +51,7 @@ CREATE FUNCTION REGEXP_REPLACE (
     )
 RETURNS NVARCHAR(max)
 AS
-EXTERNAL NAME [regexp.RegExUdf].RegExUdf.regexReplace
+EXTERNAL NAME [sqlclr.RegExUdf].RegExUdf.regexReplace
 GO
 
 CREATE FUNCTION REGEXP_SPLIT (
@@ -48,7 +60,7 @@ CREATE FUNCTION REGEXP_SPLIT (
     )
 RETURNS TABLE (split NVARCHAR(max) NULL)
 AS
-EXTERNAL NAME [regexp.RegExUdf].RegExUdf.regexSplit
+EXTERNAL NAME [sqlclr.RegExUdf].RegExUdf.regexSplit
 GO
 
 

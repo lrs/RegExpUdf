@@ -62,12 +62,42 @@ SELECT code
 FROM codes(NOLOCK)
 WHERE code LIKE '09098790%'
 
+-- Palindrome check function
+CREATE FUNCTION fnIsPalindrome (@src NVARCHAR(MAX))
+RETURNS BIT
+AS
+BEGIN
+    DECLARE @pal NVARCHAR(max)
+		,@result BIT = 0
+        ,@lap NVARCHAR(max) = ''
+        ,@i INT;
+		
+    -- Remove non alphanumeric characters.
+    SET @pal = master.dbo.REGEXP_REPLACE(@src, '[^a-zA-Z0-9]', '');
+
+    -- Get the reversed expression
+    SET @i = LEN(@pal);
+    WHILE @i > 0
+    BEGIN
+        SET @lap = @lap + SUBSTRING(@pal, @i, 1);
+        SET @i = @i - 1;
+    END
+
+    -- If the expression and reversed expression match then it's a palindrome
+    IF (@pal = @lap) SET @result = 1;
+
+	RETURN @result;
+END
+GO
+-- Usage
+SELECT master.dbo.fnIsPalindrome('Are we not pure? "No sir!" Panama''s moody Noriega brags. "It is garbage!" Irony dooms a man; a prisoner up to new era.');
+-- returns 1
 
 -- Misc.
 WITH items (item)
 AS (
     SELECT *
-    FROM dbo.REGEXP_SPLIT('0-1,2-3,4;5,6-7;8,9', ',|-|;')
+    FROM dbo.REGEXP_SPLIT('0-1,2-3,4;5,6-7;8,9', '[,|\-|;]')
     )
 SELECT *
 FROM items;

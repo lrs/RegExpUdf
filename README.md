@@ -1,4 +1,5 @@
-#Regular Expressions for SQL Server 
+#Regular Expressions for SQL Server
+
 ##An SQLCLR assembly to provide regexp functions similar to Oracle
 
 Provides the following functions:
